@@ -1,0 +1,12 @@
+{
+  "com.digitalpebble.storm.crawler.parse.ParseFilters": [
+    {
+      "class": "com.digitalpebble.storm.crawler.parse.filter.XPathFilter",
+      "name": "XPathFilter",
+      "params": {
+        "canonical": "//*[@rel=\"canonical\"]/@href",
+        "description": "//*[@name=\"description\"]/@content"
+      }
+    }
+  ]
+}
