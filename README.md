@@ -1,6 +1,6 @@
 alfresco-apache-storm-demo
 =============
-First this will fetch all the nodes from Alfresco repository and process them. (For demonstration purposes, nodes are being fetched and printed.) Then Apache Storm continously checks for changed nodes using Alfresco indexer webscript. If any change is detected, project will fetch them and process them.
+First this will fetch all the nodes from Alfresco repository and process them. (For demonstration purposes, nodes are being fetched and printed.) Then [Apache Storm](https://storm.apache.org/) continously checks for changed nodes using Alfresco indexer webscript. If any change is detected, project will fetch them and process them.
 
 Alfresco/Apache Storm demo is developed using [storm-crawler](https://github.com/DigitalPebble/storm-crawler) from [@DigitalPebble](https://github.com/DigitalPebble). 
 
