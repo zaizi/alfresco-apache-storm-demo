@@ -2,17 +2,17 @@ alfresco-apache-storm-demo
 =============
 This demo project will fetch all the nodes from Alfresco to Apache Storm to process.(For demonstration purposes, nodes are being fetched and printed.) Then [Apache Storm](https://storm.apache.org/) continuously checks for changed nodes using Alfresco indexer webscript. If any change is detected, project will fetch them and process them.
 
-To run this demo, you need a running Alfresco instance with [alfresco-indexer](https://github.com/maoo/alfresco-indexer) AMP.
+To run this demo, you need a running Alfresco instance with [alfresco-indexer](https://github.com/maoo/alfresco-indexer) AMP. Then follow below instructions. (Instructions were extracted from storm-crawler project.)
 
 ### Running in local mode
-To get started with storm-crawler, it's recommended that you run the CrawlTopology in local mode.
+To get started with alfresco-apache-storm-demo, it's recommended that you run the CrawlTopology in local mode.
  
 NOTE: These instructions assume that you have Maven installed.
 
 First, clone the project from github:
  
  ``` sh
- git clone https://github.com/DigitalPebble/storm-crawler
+ git clone https://github.com/zaizi/alfresco-apache-storm-demo.git
  ```
  
 Then :
