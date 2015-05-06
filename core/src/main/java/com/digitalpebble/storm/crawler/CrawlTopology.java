@@ -29,6 +29,8 @@ import com.digitalpebble.storm.crawler.bolt.SiteMapParserBolt;
 import com.digitalpebble.storm.crawler.bolt.StatusStreamBolt;
 import com.digitalpebble.storm.crawler.bolt.URLPartitionerBolt;
 import com.digitalpebble.storm.crawler.spout.RandomURLSpout;
+import com.zaizi.alfresco.bolt.ProcessNodes;
+import com.zaizi.alfresco.spouts.AlfrescoSpout;
 
 /**
  * Dummy topology to play with the spouts and bolts
@@ -44,6 +46,11 @@ public class CrawlTopology extends ConfigurableTopology {
         TopologyBuilder builder = new TopologyBuilder();
 
         builder.setSpout("spout", new RandomURLSpout());
+
+        builder.setSpout("spoutAlfresco", new AlfrescoSpout());
+
+        builder.setBolt("process", new ProcessNodes())
+                .shuffleGrouping("spoutAlfresco");
 
         builder.setBolt("partitioner", new URLPartitionerBolt())
                 .shuffleGrouping("spout");
@@ -63,9 +70,11 @@ public class CrawlTopology extends ConfigurableTopology {
         builder.setBolt("index", new IndexerBolt()).localOrShuffleGrouping(
                 "parse");
 
+
         builder.setBolt("status", new PrinterBolt())
                 .localOrShuffleGrouping("fetch", Constants.StatusStreamName)
                 .localOrShuffleGrouping("sitemap", Constants.StatusStreamName)
+                .localOrShuffleGrouping("process", Constants.StatusStreamName)
                 .localOrShuffleGrouping("switch", Constants.StatusStreamName)
                 .localOrShuffleGrouping("parse", Constants.StatusStreamName);
 
